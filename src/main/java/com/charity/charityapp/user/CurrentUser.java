@@ -9,10 +9,10 @@ public class CurrentUser extends User {
 
     private final com.charity.charityapp.user.User user;
 
-    public CurrentUser(String username, String password,
+    public CurrentUser(String email, String password,
                        Collection<? extends GrantedAuthority> authorities,
                        com.charity.charityapp.user.User user) {
-        super(username, password, authorities);
+        super(email, password, authorities);
         this.user = user;
     }
 

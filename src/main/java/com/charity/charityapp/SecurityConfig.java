@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/user/**", "/available/**", "/parking/**","/occupied/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/donation/**", "/user/**","/occupied/**").hasAnyRole("USER", "ADMIN")
                 .and().formLogin().loginPage("/signIn").defaultSuccessUrl("/user/main").failureUrl("/signIn?error=true")
                 .and().rememberMe().rememberMeParameter("rememberMe").tokenValiditySeconds(3600)
                 .tokenRepository(persistentTokenRepository()).userDetailsService(this.customUserDetailsService())

@@ -4,7 +4,7 @@ import com.charity.charityapp.category.Category;
 import com.charity.charityapp.institution.Institution;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.catalina.LifecycleState;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -42,13 +42,14 @@ public class Donation {
     @NotBlank
     private String city;
 
-    @NotEmpty
+    @NotBlank
+    private String phone;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
 
-    @NotEmpty
     private LocalTime pickUpTime;
 
-    @NotBlank
     private String pickUpComment;
 
 
