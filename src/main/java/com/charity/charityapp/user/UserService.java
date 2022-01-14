@@ -4,6 +4,8 @@ import java.util.List;
 
 public interface UserService {
 
-    User findByLogin(String login);
+    User findByEmail(String email);
+
+    void createUser(User user);
 
 }
