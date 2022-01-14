@@ -4,7 +4,6 @@ import com.charity.charityapp.category.Category;
 import com.charity.charityapp.institution.Institution;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.catalina.LifecycleState;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
