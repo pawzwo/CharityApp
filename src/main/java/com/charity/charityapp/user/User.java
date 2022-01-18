@@ -36,4 +36,14 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
+    @Size(min = 2, message = "Must have at least two characters")
+    private String phone;
+    @Size(min = 2, message = "Must have at least two characters")
+    private String street;
+    @Size(min = 2, message = "Must have at least two characters")
+    private String zipCode;
+    @Size(min = 2, message = "Must have at least two characters")
+    private String city;
+
+
 }

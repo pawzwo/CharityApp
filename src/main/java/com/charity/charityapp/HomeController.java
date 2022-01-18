@@ -29,19 +29,19 @@ public class HomeController {
     @GetMapping("signUp")
     public String showForm(Model model) {
         model.addAttribute(new User());
-        return "/user/signUpForm";
+        return "user/signUpForm";
 
     }
 
     @PostMapping("signUp")
     public String getForm(@Valid User user) {
         userService.createUser(user);
-        return "/user/signInForm";
+        return "redirect:/signIn";
     }
 
     @GetMapping("signIn")
     public String signIn() {
-        return "/user/signInForm";
+        return "user/signInForm";
 
     }
 

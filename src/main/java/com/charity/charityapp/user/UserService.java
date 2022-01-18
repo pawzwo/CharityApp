@@ -8,4 +8,6 @@ public interface UserService {
 
     void createUser(User user);
 
+    void updateUserDetails(String firstName, String lastName, String email, String street, String city, String zipCode, String phone, long id);
+
 }

@@ -17,9 +17,11 @@ import javax.sql.DataSource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final DataSource dataSource;
+    private final CustomSuccessHandler successHandler;
 
-    public SecurityConfig(DataSource dataSource) {
+    public SecurityConfig(DataSource dataSource, CustomSuccessHandler successHandler) {
         this.dataSource = dataSource;
+        this.successHandler = successHandler;
     }
 
 
@@ -28,11 +30,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/donation/**", "/user/**","/occupied/**").hasAnyRole("USER", "ADMIN")
-                .and().formLogin().loginPage("/signIn").defaultSuccessUrl("/user/main").failureUrl("/signIn?error=true")
-                .and().rememberMe().rememberMeParameter("rememberMe").tokenValiditySeconds(3600)
-                .tokenRepository(persistentTokenRepository()).userDetailsService(this.customUserDetailsService())
-                .and().logout().logoutUrl("/perform_logout").logoutSuccessUrl("/").permitAll();
+                .antMatchers("/donation/**", "/user/**").hasAnyRole("USER", "ADMIN")
+                .and().formLogin().loginPage("/signIn").successHandler(successHandler).failureUrl("/signIn?error=true")
+                .and().exceptionHandling().accessDeniedPage("/signIn")
+                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll();
 
     }
 
