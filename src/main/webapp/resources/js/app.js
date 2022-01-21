@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function() {
 
   /**
@@ -172,6 +173,50 @@ document.addEventListener("DOMContentLoaded", function() {
   if (form !== null) {
     new FormSteps(form);
   }
+
+  document.getElementById("summary").addEventListener("click", function (event) {
+
+    let categories = "";
+    document.querySelectorAll(".checked:checked").forEach(el => {
+      categories = categories + el.parentElement.lastElementChild.innerText + "; ";
+    })
+    const span1 = document.createElement("span")
+    span1.classList.add("summary--text")
+    span1.innerText = document.getElementById("bags").value + " worki: " + categories;
+    document.getElementById("no-of-bags").appendChild(span1)
+
+    const span2 = document.createElement("span")
+    span2.classList.add("summary--text")
+    span2.innerText = "Dla: " + document.querySelector(".radio:checked").parentElement.lastElementChild.firstElementChild.innerText;
+    document.getElementById("institution").appendChild(span2)
+
+    document.querySelector("#column1").querySelectorAll("input").forEach(el => {
+      const li1 = document.createElement("li");
+      li1.innerText = el.value;
+      document.getElementById("contact").appendChild(li1);
+    });
+    document.querySelector("#column2").querySelectorAll("input").forEach(el => {
+      const li2 = document.createElement("li");
+      li2.innerText = el.value;
+      document.getElementById("pick-up").appendChild(li2);
+
+    });
+
+    const li3 = document.createElement("li");
+    li3.innerText = document.querySelector("#column2").querySelector("textarea").value;
+    document.getElementById("pick-up").appendChild(li3);
+  })
+
+  document.getElementById("backButton").addEventListener("click", function (event){
+    document.getElementById("no-of-bags").removeChild(document.getElementById("no-of-bags").lastElementChild);
+    document.getElementById("institution").removeChild(document.getElementById("institution").lastElementChild);
+    while (document.getElementById("contact").firstChild) {
+      document.getElementById("contact").removeChild(document.getElementById("contact").firstChild);
+    };
+    while (document.getElementById("pick-up").firstChild) {
+      document.getElementById("pick-up").removeChild(document.getElementById("pick-up").firstChild);
+    };
+  })
 
 
 });

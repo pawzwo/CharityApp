@@ -22,7 +22,13 @@
                 <ul class="dropdown">
                     <li><a href="/user/main">Profil</a></li>
                     <li><a href="/user/donations">Moje zbiórki</a></li>
-                    <li><a href="/perform_logout">Wyloguj</a></li>
+                    <li>
+                        <a href="javascript: document.logout.submit()">Wyloguj</a>
+                        <form name="logout" action="<c:url value="/logout"/>" method="post" hidden="true">
+                            <input type="submit">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        </form>
+                    </li>
                 </ul>
             </li>
         </ul>
