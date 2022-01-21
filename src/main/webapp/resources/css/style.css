@@ -1150,6 +1150,11 @@ header nav ul.nav--actions .logged-user ul a {
   padding: 6px;
 }
 
+header nav ul.nav--actions .logged-user ul input {
+    display: inline-block;
+    padding: 6px;
+}
+
 /* line 69, scss/modules/_navigation.scss */
 header nav ul.nav--actions .logged-user:hover ul {
   display: block;
