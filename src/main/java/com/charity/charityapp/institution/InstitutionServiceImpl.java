@@ -19,6 +19,15 @@ public class InstitutionServiceImpl implements InstitutionService{
 
     }
 
+    @Override
+    public void enableInstitution(long id) {
+        institutionRepository.enableInstitution(id);
 
+    }
 
+    @Override
+    public void disableInstitution(long id) {
+        institutionRepository.disableInstitution(id);
+
+    }
 }
