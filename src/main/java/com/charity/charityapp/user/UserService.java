@@ -8,6 +8,16 @@ public interface UserService {
 
     void createUser(User user);
 
+    void createAdmin(User user);
+
     void updateUserDetails(String firstName, String lastName, String email, String street, String city, String zipCode, String phone, long id);
+
+    List<User> findAll();
+
+    List<User> findAllAdmins();
+
+    List<User> findAllNonAdmin();
+
+    boolean checkEnabled(CurrentUser currentUser);
 
 }
