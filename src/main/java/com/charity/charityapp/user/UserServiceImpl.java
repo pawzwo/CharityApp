@@ -65,6 +65,30 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public void createAdmin(User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getLastName()+"admin"));
+        user.setEnabled(1);
+        Role userRole = roleRepository.findByName("ROLE_ADMIN");
+        user.setRoles(new HashSet<>(List.of(userRole)));
+        userRepository.save(user);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public List<User> findAllAdmins() {
+        return userRepository.findAllAdmins();
+    }
+
+    @Override
+    public List<User> findAllNonAdmin() {
+        return userRepository.findAllNonAdmin();
+    }
+
+    @Override
     public void updateUserDetails(String firstName, String lastName, String email, String street, String city, String zipCode, String phone, long id) {
         userRepository.updateUserDetails(firstName, lastName, email, street, city, zipCode, phone, id);
     }
