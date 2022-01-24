@@ -1,5 +1,9 @@
 package com.charity.charityapp.donation;
 
+import org.apache.catalina.LifecycleState;
+
+import java.util.List;
+
 public interface DonationService {
 
 
@@ -8,6 +12,8 @@ public interface DonationService {
     int countBags();
 
     int countDonations();
+
+    List<Donation> showAllDonations();
 
 
 

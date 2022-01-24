@@ -41,6 +41,19 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public void updateUserDetails(String firstName, String lastName, String email, String street, String city, String zipCode, String phone, long id) {
+        userRepository.updateUserDetails(firstName, lastName, email, street, city, zipCode, phone, id);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+
+    //Admin
+
+    @Override
     public void createAdmin(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getLastName()+"admin"));
         user.setEnabled(1);
@@ -50,11 +63,6 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<User> findAll() {
-        return userRepository.findAll();
-    }
-
-    @Override
     public List<User> findAllAdmins() {
         return userRepository.findAllAdmins();
     }
@@ -65,36 +73,22 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void createAdmin(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getLastName()+"admin"));
-        user.setEnabled(1);
-        Role userRole = roleRepository.findByName("ROLE_ADMIN");
-        user.setRoles(new HashSet<>(List.of(userRole)));
-        userRepository.save(user);
-    }
-
-    @Override
-    public List<User> findAll() {
-        return userRepository.findAll();
-    }
-
-    @Override
-    public List<User> findAllAdmins() {
-        return userRepository.findAllAdmins();
-    }
-
-    @Override
-    public List<User> findAllNonAdmin() {
-        return userRepository.findAllNonAdmin();
-    }
-
-    @Override
-    public void updateUserDetails(String firstName, String lastName, String email, String street, String city, String zipCode, String phone, long id) {
-        userRepository.updateUserDetails(firstName, lastName, email, street, city, zipCode, phone, id);
+    public User findById(long id) {
+        return userRepository.findById(id);
     }
 
     @Override
     public boolean checkEnabled(CurrentUser currentUser) {
         return findByEmail(currentUser.getUser().getEmail()).getEnabled()==1;
+    }
+
+    @Override
+    public void enableUser(long id) {
+        userRepository.enableUser(id);
+    }
+
+    @Override
+    public void disableUser(long id) {
+        userRepository.disableUser(id);
     }
 }

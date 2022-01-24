@@ -2,6 +2,8 @@ package com.charity.charityapp.donation;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DonationServiceImpl implements DonationService{
 
@@ -26,6 +28,8 @@ public class DonationServiceImpl implements DonationService{
         return donationRepository.countBags();
     }
 
-
-
+    @Override
+    public List<Donation> showAllDonations() {
+        return donationRepository.findAll();
+    }
 }

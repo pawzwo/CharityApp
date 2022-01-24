@@ -68,18 +68,6 @@
         </ul>
     </div>
 
-    <script>
-        document.getElementById("edit-form").style.display = "none";
-        document.getElementById("edit-button").addEventListener("click", function (event){
-            document.getElementById("user-details").style.display = "none";
-            document.getElementById("edit-form").style.display = "block";
-        })
-        document.getElementById("back-button").addEventListener("click", function (event){
-            document.getElementById("user-details").style.display = "block";
-            document.getElementById("edit-form").style.display = "none";
-        })
-    </script>
-
     <div class="form-group form-group--buttons">
         <a href="/donation/form" class="btn prev-step">Przekaż dary</a>
         <a href="/donation/show" class="btn prev-step">Pokaż dary</a>

@@ -24,4 +24,13 @@ public class Institution {
     @Column(unique = true)
     private String description;
 
+    private int enabled;
+
+    private String email;
+    private String phone;
+    private String street;
+    private String zipCode;
+    private String city;
+
+
 }

@@ -23,13 +23,11 @@ public class UserController {
     public String showMain(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
 
         model.addAttribute("user", userService.findByEmail(currentUser.getUser().getEmail()));
-        model.addAttribute("currentUser", currentUser);
         return "/user/userMain";
     }
 
     @PostMapping("/main")
     public String editUser(@Valid User user, @AuthenticationPrincipal CurrentUser currentUser) {
-        System.out.println(user.getFirstName() + user.getLastName() + user.getEmail() + user.getStreet() + user.getCity() + user.getZipCode() + user.getPhone() + currentUser.getUser().getId());
         userService.updateUserDetails(user.getFirstName(), user.getLastName(), user.getEmail(), user.getStreet(), user.getCity(), user.getZipCode(), user.getPhone(), currentUser.getUser().getId());
         return "redirect:/user/main";
     }

@@ -6,5 +6,9 @@ public interface InstitutionService {
 
     List<Institution> showAllInstitutions();
 
+    void enableInstitution(long id);
+
+    void disableInstitution(long id);
+
 
 }
