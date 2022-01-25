@@ -1,10 +1,8 @@
 package com.charity.charityapp.user;
 
 import com.charity.charityapp.role.Role;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;

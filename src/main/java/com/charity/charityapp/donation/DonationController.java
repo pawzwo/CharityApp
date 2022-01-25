@@ -1,6 +1,5 @@
 package com.charity.charityapp.donation;
 
-import com.charity.charityapp.category.Category;
 import com.charity.charityapp.category.CategoryService;
 import com.charity.charityapp.institution.InstitutionService;
 import com.charity.charityapp.user.CurrentUser;
@@ -9,9 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
-import java.util.List;
+
 
 @Controller
 @RequestMapping("/donation")
@@ -36,7 +34,6 @@ public class DonationController {
         return "donationForm/donationForm";
     }
 
-    // TODO Validation, own validators
     @PostMapping("/form")
     public String getForm(@Valid Donation donation, BindingResult bindingResult) {
 
