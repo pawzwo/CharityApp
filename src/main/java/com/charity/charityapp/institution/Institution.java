@@ -33,4 +33,8 @@ public class Institution {
     private String city;
 
 
+    public Institution(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 }

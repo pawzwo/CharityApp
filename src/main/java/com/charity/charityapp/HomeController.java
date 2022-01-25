@@ -46,7 +46,7 @@ public class HomeController {
     }
 
     @GetMapping("")
-    public String showInstitutions(Model model){
+    public String showMainPage(Model model){
         model.addAttribute("institutions", institutionService.showAllInstitutions());
         model.addAttribute("donations", donationService.countDonations());
         model.addAttribute("bags", donationService.countBags());
